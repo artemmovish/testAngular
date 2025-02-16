@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="header">
+      <h1>{{ selectedNumber }}</h1>
+  </div>
+  <div class="input-container">
+      <input type="text" 
+             min="0" 
+             max="9" 
+             inputmode="numeric" 
+             maxlength="1" 
+             placeholder="Введите цифру..." 
+             [disabled]="isInput" 
+             [(ngModel)]="number"  
+             [style.border-color]="isInput ? 'red' : 'green'"   
+             oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+  </div>
+  <button class="submit-button" 
+          (click)="InputEvent()" 
+          *ngIf="!selectedNumber">Внести цифру</button>
+  <div class="button-group">
+      <button class="save-button" 
+              (click)="SaveEvent()" 
+              *ngIf="number && number !== selectedNumber">Сохранить</button>
+      <button class="edit-button" 
+              (click)="ChangeEvent()" 
+              *ngIf="selectedNumber">Изменить</button>
+  </div>
+</div>

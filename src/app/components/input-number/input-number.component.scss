@@ -1,0 +1,86 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Выравнивание элементов по центру */
+    justify-content: center;
+    height: 100%;
+}
+
+
+.header {
+    text-align: center;
+    background-color: gray;
+    border-radius: 30px;
+    padding: 10px;
+    display: inline-block;
+}
+
+.input-container {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.error-border {
+    border-color: red;
+  }
+  
+  .success-border {
+    border-color: green;
+  }
+  
+.input-container input {
+    text-align: center;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    
+}
+
+
+
+.submit-button {
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 15px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+
+.button-group {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    align-items: center;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+.button-group .save-button,
+.button-group .edit-button {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.button-group .save-button {
+    background-color: #28a745;
+}
+
+.button-group .edit-button {
+    background-color: #dc3545;
+}
