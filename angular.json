@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/test-angular",
+            "outputPath": "docs",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -50,7 +50,8 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref": "/testAngular/"
             },
             "development": {
               "optimization": false,

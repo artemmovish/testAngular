@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { NgClass, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-input-number',
   templateUrl: './input-number.component.html',
   imports: [FormsModule, NgIf, NgClass],
   styleUrls: ['./input-number.component.scss'],
+  providers: [CookieService]
 })
 export class InputNumberComponent implements OnInit {
   isInput: boolean = true;
   number?: number;
   selectedNumber?: number;
-  
-  constructor() {
-    const value = localStorage.getItem("selectedNumber");
-    this.selectedNumber = value ? JSON.parse(value) : undefined;
+
+  constructor(private cookieService: CookieService) {
+    const value = this.cookieService.get('selectedNumber');
+    this.selectedNumber = value ? +value : undefined; 
   }
 
   InputEvent() {
@@ -24,14 +26,18 @@ export class InputNumberComponent implements OnInit {
 
   SaveEvent() {
     this.isInput = true;
-    this.selectedNumber = this.number;
-    this.number = undefined;
-    localStorage.setItem('selectedNumber', JSON.stringify(this.selectedNumber));
+    if (this.number !== undefined) {
+      this.selectedNumber = this.number;
+      this.cookieService.set('selectedNumber', this.selectedNumber.toString(), { path: '/', expires: 365 });
+      this.number = undefined;
+    }
   }
 
   ChangeEvent() {
     this.isInput = false;
-    localStorage.setItem('selectedNumber', JSON.stringify(this.selectedNumber));
+    if (this.selectedNumber !== undefined) {
+      this.cookieService.set('selectedNumber', this.selectedNumber.toString(), { path: '/', expires: 365 });
+    }
   }
 
   ngOnInit() {}
